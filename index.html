@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Welcome to Lucas Technologies</title>
+   <style>
+     /* Your existing styles here */
+   </style>
+ </head>
+ <body>
+
+   <header>
+     <h1>Welcome to Lucas Technologies</h1>
+   </header>
+
+   <div id="signup-container">
+     <h2>Sign Up</h2>
+     <form id="signup-form">
+       <label for="signup-username">Username</label>
+       <input type="text" id="signup-username" name="signup-username" required>
+
+       <label for="signup-email">Email</label>
+       <input type="email" id="signup-email" name="signup-email" required>
+
+       <label for="signup-password">Password</label>
+       <input type="password" id="signup-password" name="signup-password" required>
+
+       <button type="button" onclick="signup()">Create Account</button>
+     </form>
+   </div>
+
+   <div id="signin-container">
+     <h2>Sign In</h2>
+     <form id="signin-form">
+       <label for="signin-username">Username</label>
+       <input type="text" id="signin-username" name="signin-username" required>
+
+       <label for="signin-password">Password</label>
+       <input type="password" id="signin-password" name="signin-password" required>
+
+       <button type="button" onclick="signin()">Sign In</button>
+     </form>
+   </div>
+
+   <footer>
+     &copy; 2023 Lucas Technologies
+   </footer>
+
+   <script>
+     function signup() {
+       // Retrieve values from the sign-up form
+       var username = document.getElementById('signup-username').value;
+       var email = document.getElementById('signup-email').value;
+       var password = document.getElementById('signup-password').value;
+
+       // Perform client-side validation (you can add more validation)
+       if (!username || !email || !password) {
+         alert('Please fill in all fields for sign-up.');
+         return;
+       }
+
+       // Store the user data in localStorage (not secure for production)
+       localStorage.setItem('username', username);
+       localStorage.setItem('email', email);
+       localStorage.setItem('password', password);
+
+       alert('Account created successfully. You can now sign in.');
+     }
+
+     function signin() {
+       // Retrieve values from the sign-in form
+       var signinUsername = document.getElementById('signin-username').value;
+       var signinPassword = document.getElementById('signin-password').value;
+
+       // Retrieve stored user data from localStorage
+       var storedUsername = localStorage.getItem('username');
+       var storedPassword = localStorage.getItem('password');
+
+       // Perform client-side validation (you can add more validation)
+       if (!signinUsername || !signinPassword) {
+         alert('Please fill in all fields for sign-in.');
+         return;
+       }
+
+       // Check if the entered credentials match the stored credentials
+       if (signinUsername === storedUsername && signinPassword === storedPassword) {
+         alert('Sign-in successful! Welcome back, ' + storedUsername + '.');
+       } else {
+         alert('Invalid username or password. Please try again.');
+       }
+     }
+   </script>
+
+ </body>
+ </html>
